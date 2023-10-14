@@ -1,0 +1,138 @@
+Business Intelligence Lab Submission Markdown
+================
+<Team Marafiki>
+<Specify the date when you submitted the lab>
+
+- [Student Details](#student-details)
+- [Setup Chunk](#setup-chunk)
+
+# Student Details
+
++—————————————————+————————————————————————————————————————————————————————–+
+\| **Student ID Numbers and Names of Group Members** \| \| \| \| \| 1.
+136446 - C - Mirav Bhojani \| \| \| \| \| \| 2. 136788 - C - Nyaga
+Derrick \| \| \| \| \| \| 3. 136709 - C - Jane Mugo \| \| \| \| \| \| 4.
+135399 - C - Sheila Kavinya
+
+  
+                                                  \| 5. 136895 - C -
+Wesley Wanyama \|  
+                                                  \| \|
+
+|                                 |                                                              |
+|---------------------------------|--------------------------------------------------------------|
+| **GitHub Classroom Group Name** | Team Marafiki                                                |
+| **Course Code**                 | BBT4206                                                      |
+| **Course Name**                 | Business Intelligence II                                     |
+| **Program**                     | Bachelor of Business Information Technology                  |
+| **Semester Duration**           | 21<sup>st</sup> August 2023 to 28<sup>th</sup> November 2023 |
+
+# Setup Chunk
+
+We start by installing all the required packages
+
+``` r
+## mlbench ----
+if (require("mlbench")) {
+  require("mlbench")
+} else {
+  install.packages("mlbench", dependencies = TRUE,
+                   repos = "https://cloud.r-project.org")
+}
+
+## readr ----
+if (require("readr")) {
+  require("readr")
+} else {
+  install.packages("readr", dependencies = TRUE,
+                   repos = "https://cloud.r-project.org")
+}
+
+## caret ----
+if (require("caret")) {
+  require("caret")
+} else {
+  install.packages("caret", dependencies = TRUE,
+                   repos = "https://cloud.r-project.org")
+}
+
+## e1071 ----
+if (require("e1071")) {
+  require("e1071")
+} else {
+  install.packages("e1071", dependencies = TRUE,
+                   repos = "https://cloud.r-project.org")
+}
+
+## factoextra ----
+if (require("factoextra")) {
+  require("factoextra")
+} else {
+  install.packages("factoextra", dependencies = TRUE,
+                   repos = "https://cloud.r-project.org")
+}
+
+## FactoMineR ----
+if (require("FactoMineR")) {
+  require("FactoMineR")
+} else {
+  install.packages("FactoMineR", dependencies = TRUE,
+                   repos = "https://cloud.r-project.org")
+}
+```
+
+------------------------------------------------------------------------
+
+**Note:** the following “*KnitR*” options have been set as the defaults
+in this markdown:  
+`knitr::opts_chunk$set(echo = TRUE, warning = FALSE, eval = TRUE, collapse = FALSE, tidy.opts = list(width.cutoff = 80), tidy = TRUE)`.
+
+More KnitR options are documented here
+<https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html> and
+here <https://yihui.org/knitr/options/>.
+
+``` r
+knitr::opts_chunk$set(
+    eval = TRUE,
+    echo = TRUE,
+    warning = FALSE,
+    collapse = FALSE,
+    tidy = TRUE
+)
+```
+
+------------------------------------------------------------------------
+
+**Note:** the following “*R Markdown*” options have been set as the
+defaults in this markdown:
+
+> output:  
+>   
+> github_document:  
+> toc: yes  
+> toc_depth: 4  
+> fig_width: 6  
+> fig_height: 4  
+> df_print: default  
+>   
+> editor_options:  
+> chunk_output_type: console
+
+Describe the code chunk here: The dataset was loadedto perform further
+analysis
+
+`{student_performance_dataset <-   readr::read_csv(     "data/20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset.csv", # nolint} # Fill this with R related code that will be executed when the R markdown file # is rendered using knitR library(readr)`
+
+Describe the next code chunk here: This R code computes and applies a
+Box-Cox power transformation to the `student_performance_dataset`,
+stabilizing variance and enhancing normality for statistical analysis.
+
+\`\`\`{ summary(student_performance_dataset)
+
+model_of_the_transform \<- preProcess(student_performance_dataset,
+method = c(“BoxCox”)) print(model_of_the_transform)
+student_performance_dataset_box_cox_transform \<-
+predict(model_of_the_transform, \# nolint student_performance_dataset)
+summary(student_performance_dataset_box_cox_transform) } \# Fill this
+with other R related code that will be executed when the R markdown \#
+file is rendered using knitR library(readr) \`\`\`

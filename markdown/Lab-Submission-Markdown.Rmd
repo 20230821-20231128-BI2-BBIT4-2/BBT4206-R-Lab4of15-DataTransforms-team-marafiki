@@ -128,11 +128,29 @@ knitr::opts_chunk$set(
 > editor_options:\
 > chunk_output_type: console
 
-# Load dataset
 
-Load the student performance dataset
+Describe the code chunk here: The dataset was loadedto perform further analysis
 
-```{r Load dataset}
-student_performance_dataset <-
+```{student_performance_dataset <-
   readr::read_csv(
-    "data/20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset.csv", # nolint
+    "data/20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset.csv", # nolint}
+# Fill this with R related code that will be executed when the R markdown file
+# is rendered using knitR
+library(readr)
+```
+
+Describe the next code chunk here: This R code computes and applies a Box-Cox power transformation to the `student_performance_dataset`, stabilizing variance and enhancing normality for statistical analysis.
+
+```{ summary(student_performance_dataset)
+
+
+model_of_the_transform <- preProcess(student_performance_dataset, method = c("BoxCox"))
+print(model_of_the_transform)
+student_performance_dataset_box_cox_transform <- predict(model_of_the_transform, # nolint
+                                                         student_performance_dataset)
+summary(student_performance_dataset_box_cox_transform)
+}
+# Fill this with other R related code that will be executed when the R markdown
+# file is rendered using knitR
+library(readr)
+```
